@@ -1,2 +1,2 @@
-:HL["/TribenTrend/_next/static/chunks/1z-p0nxboq0nd.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"K5w-eW8DZd7uFGPsX9Kqm"}
+:HL["/TribenTrend/_next/static/chunks/3r_le4trc0tqi.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"hI_xjCTs5fAnK3qCnifUU"}

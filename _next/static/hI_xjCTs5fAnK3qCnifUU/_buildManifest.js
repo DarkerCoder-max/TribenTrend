@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/TribenTrend//_next/:path+",
+        "destination": "/TribenTrend/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
