@@ -1,7 +1,7 @@
 export const academyConfig = { name: 'Al-Noor Coaching Academy' }
 
 export type Student = { id: number; name: string; className: string; guardian: string; phone: string; present: boolean }
-export type Fee = { id: number; student: string; className: string; amount: number; dueDate: string; status: 'Paid' | 'Pending' | 'Overdue' }
+export type Fee = { id: number; student: string; className: string; amount: number; dueDate: string; status: 'Paid' | 'Pending' | 'Overdue'; daysOverdue?: number }
 
 const names = ['Ayesha Khan','Muhammad Hamza','Fatima Zahra','Ali Raza','Hira Siddiqui','Usman Tariq','Maham Iqbal','Abdullah Ahmed','Zainab Noor','Saad Malik','Eman Fatima','Hassan Nawaz','Laiba Asif','Bilal Sheikh','Mariam Javed','Omar Farooq','Areeba Shah','Daniyal Butt','Sana Yousaf','Talha Imran']
 const guardians = ['Nadia Khan','Imran Ahmed','Sadia Raza','Farooq Siddiqui','Shazia Tariq']
@@ -21,7 +21,7 @@ export const navItems = [{ key: 'dashboard', label: 'Overview', icon: 'LayoutDas
 export type PageKey = typeof navItems[number]['key']
 
 export const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/TribeTrend-LQ736ClWixaPjvCYx1zuAgO9ca05vy.png'
-export const today = '05 Oct 2026'
+export const today = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date())
 
 export const getAttendanceMessage = (student: string, className: string, language: 'en' | 'ur') => language === 'ur' ? `محترم والدین، ${student} آج ${className} میں غیر حاضر تھے، ${today}۔ - ${academyConfig.name}` : `Dear Parent, ${student} was absent from ${className} today, ${today}. - ${academyConfig.name}`
 
@@ -40,7 +40,7 @@ export const getStudentById = (id: number) => students.find((student) => student
 
 export const getAbsentStudents = (items: Student[]) => items.filter((student) => !student.present)
 
-export const recentMonth = 'October 2026'
+export const recentMonth = new Intl.DateTimeFormat('en-GB', { month: 'long', year: 'numeric' }).format(new Date())
 
 export const receiptNumber = (id: number) => `NT-${today.replaceAll(' ', '')}-${String(id).padStart(3, '0')}`
 
@@ -66,7 +66,7 @@ export const feePreview = fees.slice(0, 10)
 
 export const markPreview = marks
 
-export const currentDateValue = '2026-10-05'
+export const currentDateValue = new Date().toISOString().slice(0, 10)
 
 export const inputDateLabel = '05 October 2026'
 
@@ -93,6 +93,9 @@ export const academyShortName = 'Al-Noor'
 export const studentTotal = students.length
 
 export const pendingFeeTotal = fees.filter((fee) => fee.status !== 'Paid').reduce((sum, fee) => sum + fee.amount, 0)
+export const pendingFeeCount = fees.filter((fee) => fee.status !== 'Paid').length
+export const overdueFeeCount = fees.filter((fee) => fee.status === 'Overdue').length
+export const topDefaulters = fees.filter((fee) => fee.status === 'Overdue').sort((a, b) => (b.daysOverdue ?? 0) - (a.daysOverdue ?? 0))
 
 export const paidFeeTotal = fees.filter((fee) => fee.status === 'Paid').reduce((sum, fee) => sum + fee.amount, 0)
 
